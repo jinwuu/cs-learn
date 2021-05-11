@@ -3,8 +3,8 @@
 // 冒泡
 function bubbleSort(arr) {
   const l = arr.length - 1
-  let exchanged = false
   for (let i = 0; i < l; i++) {
+    let exchanged = false
     for (let j = 0; j < l - i; j++) {
       if (arr[j] > arr[j + 1]) {
         [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]]
