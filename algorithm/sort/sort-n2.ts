@@ -2,10 +2,17 @@
 
 // 冒泡
 function bubbleSort(arr) {
-  for (let i = 0; i < arr.length - 1; i++) {
-    for (let j = i + 1; j < arr.length; j++) {
-      [arr[i], arr[j]] = [Math.min(arr[i], arr[j]), Math.max(arr[i], arr[j])]
+  const l = arr.length - 1
+  let exchanged = false
+  for (let i = 0; i < l; i++) {
+    for (let j = 0; j < l - i; j++) {
+      if (arr[j] > arr[j + 1]) {
+        [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]]
+        exchanged = true
+      }
     }
+    if (!exchanged)
+      break
   }
   return arr
 }
