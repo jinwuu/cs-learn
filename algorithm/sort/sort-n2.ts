@@ -22,11 +22,9 @@ function insertSort(arr) {
   for (let i = 1; i < arr.length; i++) {
     let p = i
     let temp = arr[p]
-    for (let j = i - 1; j >= 0; j--) {
-      if (arr[j] > temp) {
-        p = j
-        arr[j + 1] = arr[j]
-      }
+    for (let j = i - 1; j >= 0 && arr[j] > temp; j--) {
+      p = j
+      arr[j + 1] = arr[j]
     }
     arr[p] = temp
   }
