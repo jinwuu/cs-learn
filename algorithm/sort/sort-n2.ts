@@ -26,7 +26,8 @@ function insertSort(arr) {
       p = j
       arr[j + 1] = arr[j]
     }
-    arr[p] = temp
+    if (p !== i)
+      arr[p] = temp
   }
   return arr
 }

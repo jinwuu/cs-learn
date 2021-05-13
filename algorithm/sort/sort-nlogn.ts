@@ -11,13 +11,14 @@ function quickSort(arr) {
       while (i < j && arr[j] >= pivot) {
         j--
       }
-      [arr[i], arr[j]] = [arr[j], arr[i]]
+      arr[i] = arr[j]
 
       while (i < j && arr[i] <= pivot) {
         i++
       }
-      [arr[i], arr[j]] = [arr[j], arr[i]]
+      arr[j] = arr[i]
     }
+    arr[i] = pivot
     sort(i + 1, right)
     sort(left, i - 1)
   }
