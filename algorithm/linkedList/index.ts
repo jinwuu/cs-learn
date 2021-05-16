@@ -7,6 +7,8 @@ class ListNode {
   }
 }
 
+// 以下为leetcode题目
+
 // 21. 合并两个有序链表
 function mergeTwoListsByCirculation(l1: ListNode, l2: ListNode): ListNode {
   let virtualNode = new ListNode()
@@ -83,4 +85,15 @@ function hasCycle(head) {
   //   return true
   // }
   // return false
+}
+
+// 160. 相交链表: 找到两个单链表相交的起始节点
+function getIntersectionNode(headA: ListNode, headB: ListNode): ListNode {
+  if (!headA || !headB) return null
+  let [pA, pB] = [headA, headB]
+  while (pA !== pB) {
+    pA = pA ? pA.next : headB
+    pB = pB ? pB.next : headA
+  }
+  return pA
 }
