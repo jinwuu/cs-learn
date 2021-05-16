@@ -38,3 +38,28 @@ function mergeTwoListsByRecursion(l1: ListNode, l2: ListNode): ListNode {
     return l2
   }
 }
+
+// 83. 删除排序链表中的重复元素
+function deleteDuplicatesByCirculation(head: ListNode): ListNode {
+  if (!head) return head
+  let cur = head
+  while (cur.next) {
+    if (cur.val === cur.next.val) {
+      cur.next = cur.next.next
+    } else {
+      cur = cur.next
+    }
+  }
+  return head
+}
+
+function deleteDuplicatesByRecursion(head: ListNode): ListNode {
+  if (!head || !head.next) return head
+  if (head.val === head.next.val) {
+    head.next = head.next.next
+    deleteDuplicatesByRecursion(head)
+  } else {
+    deleteDuplicatesByRecursion(head.next)
+  }
+  return head
+}
