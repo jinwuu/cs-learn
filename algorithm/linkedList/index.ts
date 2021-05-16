@@ -97,3 +97,35 @@ function getIntersectionNode(headA: ListNode, headB: ListNode): ListNode {
   }
   return pA
 }
+
+// 203. 移除链表元素: 给你一个链表的头节点 head 和一个整数 val ，请你删除链表中所有满足 Node.val == val 的节点，并返回 新的头节点
+function removeElementsByCirculation(head: ListNode, val: number): ListNode {
+  let vn = new ListNode(0, head)
+  let [pre, cur] = [vn, head]
+  while (cur) {
+    if (cur.val === val) {
+      cur = cur.next
+      pre.next = cur
+    } else {
+      pre = cur
+      cur = cur.next
+    }
+  }
+  return vn.next
+}
+
+function removeElementsByRecursion(head: ListNode, val: number): ListNode {
+  let vn = new ListNode(0, head)
+  recursion(vn)
+  return vn.next
+
+  function recursion(pre: ListNode) {
+    if (!pre?.next) return
+    if (pre.next.val === val) {
+      pre.next = pre.next.next
+      recursion(pre)
+    } else {
+      recursion(pre.next)
+    }
+  }
+}
