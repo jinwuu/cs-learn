@@ -138,3 +138,32 @@ function reverseList(head: ListNode): ListNode {
   head.next = null
   return tail
 }
+
+// 234. 回文链表
+function isPalindrome(head: ListNode): Boolean {
+  if (!head?.next) return true
+  let [pre, slow, fast] = [null, head, head.next]
+  const swap = () => {
+    let { next } = slow
+    slow.next = pre
+    pre = slow
+    slow = next
+  }
+
+  while (fast?.next) {
+    fast = fast.next.next
+    swap()
+  }
+  if (fast) {
+    swap()
+  } else {
+    slow = slow.next
+  }
+
+  while (slow) {
+    if (slow.val !== pre.val) return false
+    slow = slow.next
+    pre = pre.next
+  }
+  return true
+}
