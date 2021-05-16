@@ -129,3 +129,12 @@ function removeElementsByRecursion(head: ListNode, val: number): ListNode {
     }
   }
 }
+
+// 206. 反转链表
+function reverseList(head: ListNode): ListNode {
+  if (!head?.next) return head
+  const tail = reverseList(head.next)
+  head.next.next = head
+  head.next = null
+  return tail
+}
