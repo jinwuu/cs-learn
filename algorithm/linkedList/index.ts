@@ -173,3 +173,44 @@ function deleteNode(node: ListNode) {
   node.val = node.next.val
   node.next = node.next.next
 }
+
+// 876. 链表的中间结点
+function middleNode(head: ListNode): ListNode {
+  if (!head?.next) return head
+  let [slow, fast] = [head, head]
+  while (fast?.next) {
+    fast = fast.next.next
+    slow = slow.next
+  }
+  return slow
+}
+
+// 1290. 二进制链表转整数
+function getDecimalValue(head: ListNode): number {
+  let [l, num, cur] = [0, 0, head]
+  while (cur) {
+    l++
+    cur = cur.next
+  }
+  while (head) {
+    num += (2 ** --l * head.val)
+    head = head.next
+  }
+  return num
+}
+
+// 1474. 删除链表 M 个节点之后的 N 个节点
+function deleteNodes(head: ListNode, m: number, n: number): ListNode {
+  let [i, j, pre, cur, x, y] = [1, 1, null, head, m + 1, n + 1]
+  while (cur) {
+    while (cur && i++ % x) {
+      pre = cur
+      cur = cur.next
+    }
+    while (cur && j++ % y) {
+      cur = cur.next
+      pre.next = cur
+    }
+  }
+  return head
+}
