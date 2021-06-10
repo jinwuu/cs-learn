@@ -2,17 +2,19 @@
 
 // 冒泡
 function bubbleSort(arr) {
-  const l = arr.length - 1
-  for (let i = 0; i < l; i++) {
+  for (let i = 0, l = arr.length - 1, sortBorder = l; i < l; i++) {
     let exchanged = false
-    for (let j = 0; j < l - i; j++) {
+    let lastExchangeIndex = 0
+    for (let j = 0; j < sortBorder; j++) {
       if (arr[j] > arr[j + 1]) {
         [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]]
         exchanged = true
+        lastExchangeIndex = j
       }
     }
     if (!exchanged)
       break
+    sortBorder = lastExchangeIndex
   }
   return arr
 }
