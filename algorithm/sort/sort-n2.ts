@@ -2,7 +2,7 @@
 
 // 冒泡
 function bubbleSort(arr) {
-  for (let i = 0, l = arr.length - 1, sortBorder = l; i < l; i++) {
+  for (let i = 0, r = arr.length - 1, sortBorder = r; i < r; i++) {
     let exchanged = false
     let lastExchangeIndex = 0
     for (let j = 0; j < sortBorder; j++) {
@@ -15,6 +15,39 @@ function bubbleSort(arr) {
     if (!exchanged)
       break
     sortBorder = lastExchangeIndex
+  }
+  return arr
+}
+
+// 鸡尾酒 or 快乐小时
+function cockTailSort(arr) {
+  let rightSortBorder = arr.length - 1
+  let leftSortBorder = 0
+  for (let i = 0; i < arr.length / 2; i++) {
+    let exchanged = false
+    let lastExchangeIndex = 0
+    for (let j = leftSortBorder; j < rightSortBorder; j++) {
+      if (arr[j] > arr[j + 1]) {
+        [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]]
+        exchanged = true
+        lastExchangeIndex = j
+      }
+    }
+    if (!exchanged)
+      break
+    rightSortBorder = lastExchangeIndex
+
+    exchanged = false
+    for (let j = rightSortBorder; j > leftSortBorder; j--) {
+      if (arr[j] < arr[j - 1]) {
+        [arr[j], arr[j - 1]] = [arr[j - 1], arr[j]]
+      }
+      exchanged = true
+      lastExchangeIndex = j
+    }
+    if (!exchanged)
+      break
+    leftSortBorder = lastExchangeIndex
   }
   return arr
 }
