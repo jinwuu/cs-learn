@@ -23,8 +23,7 @@ function insertSort(arr) {
     let p = i
     let temp = arr[p]
     for (let j = i - 1; j >= 0 && arr[j] > temp; j--) {
-      p = j
-      arr[j + 1] = arr[j]
+      arr[j + 1] = arr[p = j]
     }
     if (p !== i)
       arr[p] = temp
@@ -41,7 +40,8 @@ function selectionSort(arr) {
         minIndex = j
       }
     }
-    [arr[i], arr[minIndex]] = [arr[minIndex], arr[i]]
+    if (i !== minIndex)
+      [arr[i], arr[minIndex]] = [arr[minIndex], arr[i]]
   }
   return arr
 }
